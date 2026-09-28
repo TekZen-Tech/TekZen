@@ -2,13 +2,13 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx}",
   ],
   theme: {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#14442A',
+          DEFAULT: '#002D17',
           50: '#F0F7F3',
           100: '#DDEFE4',
           200: '#BDDFCB',
