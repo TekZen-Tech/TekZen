@@ -1,0 +1,4 @@
+.specialization-footer p:hover {
+    color: var(secondary-500);
+    cursor: pointer;
+}
