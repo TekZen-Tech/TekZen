@@ -9,7 +9,7 @@
 html,
 body {
   color-scheme: light;
-  @apply bg-tertiary-50
+  @apply bg-tertiary-50;
 }
 
 * {
@@ -24,4 +24,8 @@ h4,
 h5,
 h6 {
   font-family: "Sora";
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
