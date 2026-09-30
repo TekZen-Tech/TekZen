@@ -35,8 +35,8 @@ export function Navbar() {
   };
 
   return (
-    <header className="w-full px-4 pt-4 pb-2 top-0 z-50">
-      <nav className="max-w-7xl mx-auto bg-[#133e2b] rounded-full px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between shadow-lg border border-[#1b4a35]">
+    <header className="sticky top-0 w-full px-4 pt-4 pb-2 z-1000">
+      <nav className="max-w-7xl mx-auto bg-[#133e2b] rounded-full px-4 sm:px-6 py-2.5 sm:py-3 md:my-3 flex items-center justify-between shadow-lg border border-[#1b4a35]">
         {/* Logo Section */}
         <Link to="/" className="flex items-center gap-3 shrink-0">
           <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#c8f269] flex items-center justify-center shrink-0">
@@ -89,8 +89,8 @@ export function Navbar() {
                   <a
                     href={item.href}
                     className={`flex items-center gap-1.5 transition-colors duration-200 ${isActive
-                        ? "text-[#c8f269] font-semibold"
-                        : "text-[#d2ded5] hover:text-white"
+                      ? "text-[#c8f269] font-semibold"
+                      : "text-[#d2ded5] hover:text-white"
                       }`}
                   >
                     <span>{item.name}</span>
@@ -99,8 +99,8 @@ export function Navbar() {
                   <Link
                     to={item.href}
                     className={`flex items-center gap-1.5 transition-colors duration-200 ${isActive
-                        ? "text-[#c8f269] font-semibold"
-                        : "text-[#d2ded5] hover:text-white"
+                      ? "text-[#c8f269] font-semibold"
+                      : "text-[#d2ded5] hover:text-white"
                       }`}
                   >
                     <span>{item.name}</span>
@@ -151,8 +151,8 @@ export function Navbar() {
                       href={item.href}
                       onClick={() => setOpenNav(false)}
                       className={`flex items-center justify-between py-2 transition-colors border-b border-[#1b4a35] ${isActive
-                          ? "text-[#c8f269] font-semibold"
-                          : "text-[#d2ded5] hover:text-white"
+                        ? "text-[#c8f269] font-semibold"
+                        : "text-[#d2ded5] hover:text-white"
                         }`}
                     >
                       <span>{item.name}</span>
@@ -162,8 +162,8 @@ export function Navbar() {
                       to={item.href}
                       onClick={() => setOpenNav(false)}
                       className={`flex items-center justify-between py-2 transition-colors border-b border-[#1b4a35] ${isActive
-                          ? "text-[#c8f269] font-semibold"
-                          : "text-[#d2ded5] hover:text-white"
+                        ? "text-[#c8f269] font-semibold"
+                        : "text-[#d2ded5] hover:text-white"
                         }`}
                     >
                       <span>{item.name}</span>
