@@ -1,9 +1,10 @@
 import React from "react";
+import { Link, useLocation } from "react-router";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export function Navbar() {
   const [openNav, setOpenNav] = React.useState(false);
-  const [activePath, setActivePath] = React.useState("/");
+  const location = useLocation();
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -17,17 +18,27 @@ export function Navbar() {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "Courses", href: "#courses" },
-    { name: "About us", href: "#about" },
-    { name: "Contact us", href: "#contact" },
-    { name: "Testimonials", href: "#testimonials" },
+    { name: "Courses", href: "/courses" },
+    { name: "About us", href: "/about" },
+    { name: "Contact us", href: "/contact" },
+    { name: "Testimonials", href: "/#testimonials" },
   ];
+
+  const isItemActive = (href) => {
+    if (href === "/") {
+      return location.pathname === "/";
+    }
+    if (href.startsWith("/#")) {
+      return false;
+    }
+    return location.pathname.startsWith(href);
+  };
 
   return (
     <header className="w-full px-4 pt-4 pb-2 top-0 z-50">
       <nav className="max-w-7xl mx-auto bg-[#133e2b] rounded-full px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between shadow-lg border border-[#1b4a35]">
         {/* Logo Section */}
-        <a href="/" className="flex items-center gap-3 shrink-0">
+        <Link to="/" className="flex items-center gap-3 shrink-0">
           <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#c8f269] flex items-center justify-center shrink-0">
             <svg
               className="w-5 h-5 sm:w-6 sm:h-6 text-[#133e2b]"
@@ -65,44 +76,52 @@ export function Navbar() {
               CODING INSTITUTE
             </span>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Navigation Links */}
         <ul className="hidden lg:flex items-center gap-6 xl:gap-8 font-body text-sm font-medium">
           {navItems.map((item) => {
-            const isActive = activePath === item.href;
+            const isActive = isItemActive(item.href);
+            const isHash = item.href.startsWith("/#");
             return (
               <li key={item.name}>
-                <a
-                  href={item.href}
-                  onClick={(e) => {
-                    if (item.href.startsWith("#")) e.preventDefault();
-                    setActivePath(item.href);
-                  }}
-                  className={`flex items-center gap-1.5 transition-colors duration-200 ${
-                    isActive
-                      ? "text-[#c8f269] font-semibold"
-                      : "text-[#d2ded5] hover:text-white"
-                  }`}
-                >
-                  <span>{item.name}</span>
-                  {isActive && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#c8f269] inline-block" />
-                  )}
-                </a>
+                {isHash ? (
+                  <a
+                    href={item.href}
+                    className={`flex items-center gap-1.5 transition-colors duration-200 ${isActive
+                        ? "text-[#c8f269] font-semibold"
+                        : "text-[#d2ded5] hover:text-white"
+                      }`}
+                  >
+                    <span>{item.name}</span>
+                  </a>
+                ) : (
+                  <Link
+                    to={item.href}
+                    className={`flex items-center gap-1.5 transition-colors duration-200 ${isActive
+                        ? "text-[#c8f269] font-semibold"
+                        : "text-[#d2ded5] hover:text-white"
+                      }`}
+                  >
+                    <span>{item.name}</span>
+                    {isActive && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#c8f269] inline-block" />
+                    )}
+                  </Link>
+                )}
               </li>
             );
           })}
         </ul>
 
         {/* Desktop CTA Button */}
-        <a
-          href="#contact"
+        <Link
+          to="/courses#book-demo"
           className="hidden sm:flex items-center gap-2 bg-[#c8f269] hover:bg-[#bbf264] text-[#133e2b] px-5 py-2.5 rounded-full font-body text-sm font-semibold transition-all shadow-sm hover:shadow active:scale-95 shrink-0"
         >
           <span className="w-2 h-2 rounded-full bg-[#133e2b] inline-block" />
-          <span>Contact / Free Demo</span>
-        </a>
+          <span>Claim 3-Day Pass</span>
+        </Link>
 
         {/* Mobile Hamburger Toggle */}
         <button
@@ -123,39 +142,48 @@ export function Navbar() {
         <div className="lg:hidden max-w-7xl mx-auto mt-2 bg-[#133e2b] rounded-2xl p-5 border border-[#1b4a35] shadow-xl flex flex-col gap-4 text-white">
           <ul className="flex flex-col gap-3 font-body text-base">
             {navItems.map((item) => {
-              const isActive = activePath === item.href;
+              const isActive = isItemActive(item.href);
+              const isHash = item.href.startsWith("/#");
               return (
                 <li key={item.name}>
-                  <a
-                    href={item.href}
-                    onClick={(e) => {
-                      if (item.href.startsWith("#")) e.preventDefault();
-                      setActivePath(item.href);
-                      setOpenNav(false);
-                    }}
-                    className={`flex items-center justify-between py-2 transition-colors border-b border-[#1b4a35] ${
-                      isActive
-                        ? "text-[#c8f269] font-semibold"
-                        : "text-[#d2ded5] hover:text-white"
-                    }`}
-                  >
-                    <span>{item.name}</span>
-                    {isActive && (
-                      <span className="w-2 h-2 rounded-full bg-[#c8f269]" />
-                    )}
-                  </a>
+                  {isHash ? (
+                    <a
+                      href={item.href}
+                      onClick={() => setOpenNav(false)}
+                      className={`flex items-center justify-between py-2 transition-colors border-b border-[#1b4a35] ${isActive
+                          ? "text-[#c8f269] font-semibold"
+                          : "text-[#d2ded5] hover:text-white"
+                        }`}
+                    >
+                      <span>{item.name}</span>
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      onClick={() => setOpenNav(false)}
+                      className={`flex items-center justify-between py-2 transition-colors border-b border-[#1b4a35] ${isActive
+                          ? "text-[#c8f269] font-semibold"
+                          : "text-[#d2ded5] hover:text-white"
+                        }`}
+                    >
+                      <span>{item.name}</span>
+                      {isActive && (
+                        <span className="w-2 h-2 rounded-full bg-[#c8f269]" />
+                      )}
+                    </Link>
+                  )}
                 </li>
               );
             })}
           </ul>
-          <a
-            href="#contact"
+          <Link
+            to="/courses#book-demo"
             onClick={() => setOpenNav(false)}
             className="flex items-center justify-center gap-2 bg-[#c8f269] hover:bg-[#bbf264] text-[#133e2b] w-full py-3 rounded-full font-body text-sm font-semibold transition-all mt-2"
           >
             <span className="w-2 h-2 rounded-full bg-[#133e2b]" />
-            <span>Contact / Free Demo</span>
-          </a>
+            <span>Claim 3-Day Pass</span>
+          </Link>
         </div>
       )}
     </header>

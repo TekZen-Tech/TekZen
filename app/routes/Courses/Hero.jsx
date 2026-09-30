@@ -22,8 +22,22 @@ export default function Hero() {
                         <br />
                         an
                         <br />
-                        <span className="underline decoration-primary decoration-4 underline-offset-8">
-                            apprenticeship,
+                        <span className="relative inline-block">
+                            <span className="relative z-10">apprenticeship,</span>
+                            <svg
+                                className="absolute -bottom-1.5 sm:-bottom-2.5 lg:-bottom-3 left-0 w-[102%] h-3 sm:h-4 lg:h-5 text-secondary-500 pointer-events-none -z-0"
+                                viewBox="0 0 280 18"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                preserveAspectRatio="none"
+                            >
+                                <path
+                                    d="M3 13.5C70 4.5 190 3.5 277 10"
+                                    stroke="currentColor"
+                                    strokeWidth="5"
+                                    strokeLinecap="round"
+                                />
+                            </svg>
                         </span>
                         <br />
                         not a lecture.
@@ -87,17 +101,19 @@ export default function Hero() {
                     <div className="absolute -inset-4 sm:-inset-6 bg-[#F1E8DA] rounded-[60px] sm:rounded-[80px] -z-10 transform rotate-1 scale-105" />
 
                     {/* Stadium / Capsule Shaped Photo Container */}
-                    <div className="relative w-full max-w-[420px] aspect-[10/13] rounded-t-[180px] rounded-b-[180px] overflow-hidden shadow-2xl border-4 border-white/60">
-                        <img
-                            src="/fellows-collaboration.jpg"
-                            alt="TekZen Apprentices collaborating in the campus lab"
-                            className="w-full h-full object-cover object-center"
-                        />
+                    <div className="relative w-full max-w-[420px] aspect-[10/13] rounded-t-[180px] rounded-b-[180px] overflow-hidden shadow-2xl bg-red/60">
+                        <div className="relative w-full max-w-[420px] aspect-[10/13] rounded-t-[180px] rounded-b-[180px] overflow-hidden shadow-2xl border-4 border-white/60">
+                            <img
+                                src="/fellows-collaboration.jpg"
+                                alt="TekZen Apprentices collaborating in the campus lab"
+                                className="w-full h-full object-cover object-center"
+                            />
 
-                        {/* Floating Chip on the Image: Indore Campus Lab */}
-                        <div className="absolute bottom-12 right-6 bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-medium text-neutral-800 flex items-center gap-2 shadow-md border border-white/70">
-                            <span className="w-2 h-2 rounded-full bg-secondary-500 animate-pulse"></span>
-                            <span>Indore Campus Lab</span>
+                            {/* Floating Chip on the Image: Indore Campus Lab */}
+                            <div className="absolute bottom-12 right-6 bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-medium text-neutral-800 flex items-center gap-2 shadow-md border border-white/70 z-100">
+                                <span className="w-2 h-2 rounded-full bg-secondary-500 animate-pulse"></span>
+                                <span>Indore Campus Lab</span>
+                            </div>
                         </div>
                     </div>
 
