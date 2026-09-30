@@ -1,4 +1,98 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+
+// Custom styled select component to replace the basic OS default dropdown
+function CustomSelect({ label, value, options, onChange, placeholder = "Select option" }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (containerRef.current && !containerRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+    function handleKeyDown(event) {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  const selectedOption =
+    options.find((opt) => opt.value === value) || { label: value, value };
+
+  return (
+    <div className="relative" ref={containerRef}>
+      {label && (
+        <label className="block text-xs font-bold text-[#133e2b] mb-1.5">
+          {label}
+        </label>
+      )}
+
+      {/* Trigger Button with polished rounded styling */}
+      <button
+        type="button"
+        onClick={() => setIsOpen((prev) => !prev)}
+        className={`w-full bg-[#f4f4ec] hover:bg-[#ecece3] text-[#133e2b] text-xs sm:text-sm rounded-2xl px-4 py-3.5 border transition-all flex items-center justify-between text-left cursor-pointer outline-none ${
+          isOpen
+            ? "border-[#133e2b] ring-2 ring-[#133e2b]/15 bg-white shadow-sm"
+            : "border-neutral-300/80 hover:border-[#133e2b]/60"
+        }`}
+      >
+        <span className="truncate pr-2 font-medium">
+          {selectedOption.label || placeholder}
+        </span>
+        <svg
+          className={`w-4 h-4 shrink-0 text-[#133e2b] transition-transform duration-200 ${
+            isOpen ? "rotate-180" : ""
+          }`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2.5"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      {/* Custom Floating Dropdown Menu */}
+      {isOpen && (
+        <div className="absolute left-0 right-0 top-full mt-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-neutral-200 py-2 z-50 max-h-64 overflow-y-auto">
+          {options.map((opt) => {
+            const isSelected = opt.value === value;
+            return (
+              <div
+                key={opt.value}
+                onClick={() => {
+                  onChange(opt.value);
+                  setIsOpen(false);
+                }}
+                className={`px-4 py-2.5 text-xs sm:text-sm flex items-center justify-between transition-colors cursor-pointer ${
+                  isSelected
+                    ? "bg-[#c8f269]/25 text-[#133e2b] font-bold"
+                    : "text-neutral-700 hover:bg-[#c8f269]/15 hover:text-[#133e2b]"
+                }`}
+              >
+                <span className="leading-snug pr-2">{opt.label}</span>
+                {isSelected && (
+                  <span className="w-4 h-4 rounded-full bg-[#133e2b] text-[#c8f269] flex items-center justify-center text-[10px] font-bold shrink-0">
+                    ✓
+                  </span>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function CampusVisitAndTrial() {
   const [formData, setFormData] = useState({
@@ -10,6 +104,59 @@ export default function CampusVisitAndTrial() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+
+  const trackOptions = [
+    {
+      label: "Full Stack Engineering (MERN + Next.js Enterprise) (4 Months)",
+      value: "Full Stack Engineering (MERN + Next.js Enterprise) (4 Months)",
+    },
+    {
+      label: "C & C++ Systems Mastery (2.5 Months)",
+      value: "C & C++ Systems Mastery (2.5 Months)",
+    },
+    {
+      label: "Data Science & AI / ML (6 Months)",
+      value: "Data Science & AI / ML (6 Months)",
+    },
+    {
+      label: "Java Enterprise Full Stack (6 Months)",
+      value: "Java Enterprise Full Stack (6 Months)",
+    },
+    {
+      label: "Modern Web Development (3 Months)",
+      value: "Modern Web Development (3 Months)",
+    },
+    {
+      label: "Python Full Stack & Backend (5 Months)",
+      value: "Python Full Stack & Backend (5 Months)",
+    },
+  ];
+
+  const modeOptions = [
+    {
+      label: "Indore Campus (Offline In-Person)",
+      value: "Indore Campus (Offline In-Person)",
+    },
+    {
+      label: "Hybrid / Live Remote Virtual",
+      value: "Hybrid / Live Remote Virtual",
+    },
+  ];
+
+  const statusOptions = [
+    {
+      label: "College Student / Recent Grad",
+      value: "College Student / Recent Grad",
+    },
+    {
+      label: "Working Software Engineer",
+      value: "Working Software Engineer",
+    },
+    {
+      label: "Career Transitioner (Non-CS to Tech)",
+      value: "Career Transitioner (Non-CS to Tech)",
+    },
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -171,7 +318,7 @@ export default function CampusVisitAndTrial() {
                       onChange={(e) =>
                         setFormData({ ...formData, fullName: e.target.value })
                       }
-                      className="w-full bg-[#f4f4ec] text-[#133e2b] placeholder-neutral-400 text-xs sm:text-sm rounded-xl px-4 py-3 border border-transparent focus:border-[#133e2b] focus:bg-white focus:outline-none transition-all"
+                      className="w-full bg-[#f4f4ec] hover:bg-[#ecece3] text-[#133e2b] placeholder-neutral-400 text-xs sm:text-sm rounded-2xl px-4 py-3.5 border border-neutral-300/80 focus:border-[#133e2b] focus:bg-white focus:ring-2 focus:ring-[#133e2b]/15 focus:outline-none transition-all font-medium"
                     />
                   </div>
 
@@ -187,109 +334,34 @@ export default function CampusVisitAndTrial() {
                       onChange={(e) =>
                         setFormData({ ...formData, phone: e.target.value })
                       }
-                      className="w-full bg-[#f4f4ec] text-[#133e2b] placeholder-neutral-400 text-xs sm:text-sm rounded-xl px-4 py-3 border border-transparent focus:border-[#133e2b] focus:bg-white focus:outline-none transition-all"
+                      className="w-full bg-[#f4f4ec] hover:bg-[#ecece3] text-[#133e2b] placeholder-neutral-400 text-xs sm:text-sm rounded-2xl px-4 py-3.5 border border-neutral-300/80 focus:border-[#133e2b] focus:bg-white focus:ring-2 focus:ring-[#133e2b]/15 focus:outline-none transition-all font-medium"
                     />
                   </div>
                 </div>
 
-                {/* Specialization Track Row */}
-                <div>
-                  <label className="block text-xs font-bold text-[#133e2b] mb-1.5">
-                    Specialization Track *
-                  </label>
-                  <div className="relative">
-                    <select
-                      value={formData.track}
-                      onChange={(e) =>
-                        setFormData({ ...formData, track: e.target.value })
-                      }
-                      className="w-full bg-[#f4f4ec] text-[#133e2b] text-xs sm:text-sm rounded-xl px-4 py-3 border border-transparent focus:border-[#133e2b] focus:bg-white focus:outline-none transition-all appearance-none cursor-pointer pr-10"
-                    >
-                      <option value="Full Stack Engineering (MERN + Next.js Enterprise) (4 Months)">
-                        Full Stack Engineering (MERN + Next.js Enterprise) (4 Months)
-                      </option>
-                      <option value="C & C++ Systems Mastery (2.5 Months)">
-                        C & C++ Systems Mastery (2.5 Months)
-                      </option>
-                      <option value="Data Science & AI / ML (6 Months)">
-                        Data Science & AI / ML (6 Months)
-                      </option>
-                      <option value="Java Enterprise Full Stack (6 Months)">
-                        Java Enterprise Full Stack (6 Months)
-                      </option>
-                      <option value="Modern Web Development (3 Months)">
-                        Modern Web Development (3 Months)
-                      </option>
-                      <option value="Python Full Stack & Backend (5 Months)">
-                        Python Full Stack & Backend (5 Months)
-                      </option>
-                    </select>
-                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-neutral-500">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
+                {/* Specialization Track Row with Custom Polished Dropdown */}
+                <CustomSelect
+                  label="Specialization Track *"
+                  value={formData.track}
+                  options={trackOptions}
+                  onChange={(val) => setFormData({ ...formData, track: val })}
+                />
 
-                {/* Preferred Mode & Current Status Row matching Image 2 */}
+                {/* Preferred Mode & Current Status Row with Custom Polished Dropdowns */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-bold text-[#133e2b] mb-1.5">
-                      Preferred Mode *
-                    </label>
-                    <div className="relative">
-                      <select
-                        value={formData.mode}
-                        onChange={(e) =>
-                          setFormData({ ...formData, mode: e.target.value })
-                        }
-                        className="w-full bg-[#f4f4ec] text-[#133e2b] text-xs sm:text-sm rounded-xl px-4 py-3 border border-transparent focus:border-[#133e2b] focus:bg-white focus:outline-none transition-all appearance-none cursor-pointer pr-10"
-                      >
-                        <option value="Indore Campus (Offline In-Person)">
-                          Indore Campus (Offline In-Person)
-                        </option>
-                        <option value="Hybrid / Live Remote Virtual">
-                          Hybrid / Live Remote Virtual
-                        </option>
-                      </select>
-                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-neutral-500">
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
+                  <CustomSelect
+                    label="Preferred Mode *"
+                    value={formData.mode}
+                    options={modeOptions}
+                    onChange={(val) => setFormData({ ...formData, mode: val })}
+                  />
 
-                  <div>
-                    <label className="block text-xs font-bold text-[#133e2b] mb-1.5">
-                      Current Status
-                    </label>
-                    <div className="relative">
-                      <select
-                        value={formData.status}
-                        onChange={(e) =>
-                          setFormData({ ...formData, status: e.target.value })
-                        }
-                        className="w-full bg-[#f4f4ec] text-[#133e2b] text-xs sm:text-sm rounded-xl px-4 py-3 border border-transparent focus:border-[#133e2b] focus:bg-white focus:outline-none transition-all appearance-none cursor-pointer pr-10"
-                      >
-                        <option value="College Student / Recent Grad">
-                          College Student / Recent Grad
-                        </option>
-                        <option value="Working Software Engineer">
-                          Working Software Engineer
-                        </option>
-                        <option value="Career Transitioner (Non-CS to Tech)">
-                          Career Transitioner (Non-CS to Tech)
-                        </option>
-                      </select>
-                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-neutral-500">
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
+                  <CustomSelect
+                    label="Current Status"
+                    value={formData.status}
+                    options={statusOptions}
+                    onChange={(val) => setFormData({ ...formData, status: val })}
+                  />
                 </div>
 
                 {/* Submit CTA Button */}
