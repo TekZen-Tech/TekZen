@@ -9,7 +9,11 @@
 html,
 body {
   color-scheme: light;
-  @apply bg-tertiary-50
+  @apply bg-tertiary-50;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 ::-webkit-scrollbar {
@@ -32,4 +36,8 @@ h6 {
 
 .hhh{
   color: #e3f8ce;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
