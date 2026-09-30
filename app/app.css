@@ -12,6 +12,10 @@ body {
   @apply bg-tertiary-50
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 * {
   font-family: "Plus Jakarta Sans";
 }
@@ -24,4 +28,8 @@ h4,
 h5,
 h6 {
   font-family: "Sora";
+}
+
+.hhh{
+  color: #e3f8ce;
 }
