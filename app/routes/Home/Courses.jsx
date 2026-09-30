@@ -111,23 +111,26 @@ const data = [
   },
 ];
 
-export function Courses() {
+export default function Courses({ heading, subheading, title,handleDetailView }) {
+  const handleCourseClick = (course) => {
+    handleDetailView(course);
+  };
   return (
     <section id="courses" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 my-8 flex flex-col">
       {/* Header Section */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-12">
         <div className="lg:col-span-7 flex flex-col items-start text-left">
           <span className="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-[#133e2b]">
-            CURATED ENGINEERING TRACKS
+            {heading ?? "CURATED ENGINEERING TRACKS"}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#133e2b] font-headline leading-[1.15] tracking-tight mt-3">
-            Engineered for depth, not superficial certificates.
+            {subheading ?? "Engineered for depth, not superficial certificates."}
           </h2>
         </div>
 
         <div className="lg:col-span-5 flex items-end">
           <p className="text-base sm:text-lg text-neutral-600 font-body leading-relaxed">
-            Every track is constructed around verifiable GitHub proof-of-work. Choose your specialization and master the mechanics.
+            {title ?? "Every track is constructed around verifiable GitHub proof-of-work. Choose your specialization and master the mechanics."}
           </p>
         </div>
       </div>
@@ -138,6 +141,7 @@ export function Courses() {
           return (
             <div
               key={course.id}
+              onClick={() => handleCourseClick(course)}
               className="group relative p-6 sm:p-7 rounded-[2rem] border bg-white hover:bg-[#133e2b] text-neutral-900 border-neutral-200/80 hover:border-[#133e2b] shadow-xs hover:shadow-2xl transition-all duration-300 ease-out flex flex-col justify-between cursor-pointer overflow-hidden"
             >
               {/* Top-Right Corner Accent Blob */}
@@ -218,5 +222,3 @@ export function Courses() {
     </section>
   );
 }
-
-export default Courses;
