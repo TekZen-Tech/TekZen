@@ -1,6 +1,11 @@
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import Stats from "./Stats";
 import Courses from "./Courses";
+import Different from "./Different";
+import Pedagogy from "./Pedagogy";
+import TrialDemo from "./TrialDemo";
+import FAQ from "./FAQ";
+import Testimonial from "./Testimonial";
 export function Home() {
     return (
         <>
@@ -101,6 +106,11 @@ export function Home() {
             </section>
             <Stats />
             <Courses />
+            <Different/>
+            <Pedagogy/>
+            <TrialDemo/>
+            <Testimonial/>
+            <FAQ/>
         </>
     )
 }
