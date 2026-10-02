@@ -20,8 +20,8 @@ export function Navbar() {
     { name: "Home", href: "/" },
     { name: "Courses", href: "/courses" },
     { name: "About us", href: "/about" },
-    { name: "Contact us", href: "/contact" },
-    { name: "Testimonials", href: "/#testimonials" },
+    { name: "Contact us", href: "/contact-us" },
+    { name: "Testimonials", href: "/testimonial" },
   ];
 
   const isItemActive = (href) => {
