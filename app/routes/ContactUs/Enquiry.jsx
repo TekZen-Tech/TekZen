@@ -307,7 +307,7 @@ export default function Enquiry() {
               {/* Map Illustration Container */}
               <div className="relative w-full h-44 rounded-2xl overflow-hidden border border-gray-200/80 mb-3 group">
                 <img
-                  src="/indore_map.jpg"
+                  src="/indore_map.png"
                   alt="Indore Campus Map"
                   className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                 />

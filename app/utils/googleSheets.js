@@ -3,8 +3,7 @@
  * Loaded securely via environment variable VITE_GOOGLE_SHEETS_SCRIPT_URL
  */
 
-export const GOOGLE_SHEETS_SCRIPT_URL =
-import.meta.env.GOOGLE_SHEETS_SCRIPT_URL;
+export const GOOGLE_SHEETS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyaKZr7F1XP_VBQ92Nb9ovLTlTJ1l44wiOvX_6hvC05c0UtKjKyyMMMJVFByWOJaVP_/exec";
 
 export async function submitToGoogleSheets(data) {
   try {
