@@ -4,7 +4,7 @@
  */
 
 export const GOOGLE_SHEETS_SCRIPT_URL =
-import.meta.env.VITE_GOOGLE_SHEETS_SCRIPT_URL;
+import.meta.env.GOOGLE_SHEETS_SCRIPT_URL;
 
 export async function submitToGoogleSheets(data) {
   try {
