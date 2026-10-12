@@ -28,7 +28,7 @@ export default function AboutHero() {
           {/* Arched / Rounded Lab Photo Container */}
           <div className="relative w-full max-w-[480px] aspect-[4/4.4] rounded-[3rem] sm:rounded-[3.5rem] overflow-hidden shadow-2xl border-4 border-white/80 bg-[#133e2b]">
             <img
-              src="/fellows-collaboration.jpg"
+              src="/contrast.jpeg"
               alt="TekZen Engineering Lab Fellows"
               className="w-full h-full object-cover object-center"
             />
@@ -40,8 +40,8 @@ export default function AboutHero() {
             </div>
           </div>
 
-          {/* Bottom Left Floating Card: Zero Slides Policy matching Image 1 */}
-          <div className="absolute -bottom-6 -left-2 sm:-bottom-8 sm:-left-6 bg-white rounded-3xl p-4 sm:p-5 shadow-2xl border border-neutral-200/90 max-w-[270px] z-20 flex items-start gap-3.5">
+          {/* Bottom Left Floating Card: Practical Training */}
+          <div className="absolute -bottom-6 -left-2 sm:-bottom-8 sm:-left-6 bg-white rounded-3xl p-4 sm:p-5 shadow-2xl border border-neutral-200/90 max-w-[280px] z-20 flex items-start gap-3.5">
             <div className="w-10 h-10 rounded-full bg-[#c8f269] text-[#133e2b] flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
               <svg className="w-5 h-5 text-[#133e2b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
@@ -49,53 +49,59 @@ export default function AboutHero() {
             </div>
             <div>
               <h4 className="font-headline font-bold text-sm text-[#133e2b]">
-                Zero Slides Policy
+                Practical & Project-Based
               </h4>
               <p className="text-xs text-neutral-600 mt-1 leading-snug">
-                Codebases committed to GitHub and deployed to cloud clusters from Day 1.
+                Real coding exercises, guided lab assignments, and portfolio-ready projects.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Right Column: The Manifesto & Creed Headline & Text matching Image 1 */}
+        {/* Right Column: Hero Headline & Official About Copy */}
         <div className="lg:col-span-6 flex flex-col justify-center order-1 lg:order-2">
           
           {/* Top Chip */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#eef7db] text-[#133e2b] text-xs font-bold tracking-wide w-fit">
             <span>🍃</span>
-            <span>The Tekzen Manifesto & Creed</span>
+            <span>About Us • Tekzen Technologies</span>
           </div>
 
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#133e2b] font-headline tracking-tight leading-[1.08] mt-4">
-            Engineering is an<br />
+            Simplifying Tech<br />
             <span className="relative inline-block">
-              <span className="relative z-10 text-[#133e2b]">Apprenticeship,</span>
+              <span className="relative z-10 text-[#133e2b]">Excellence.</span>
               <span className="absolute left-0 bottom-1 sm:bottom-2 w-full h-3 sm:h-3.5 bg-[#c8f269] rounded-full z-0 -rotate-1 origin-left" />
-            </span><br />
-            Not a Lecture.
+            </span>
           </h1>
 
-          {/* Manifesto Description */}
-          <div className="space-y-4 text-neutral-600 text-sm sm:text-base leading-relaxed mt-6">
+          {/* Subheading */}
+          <p className="text-lg sm:text-xl font-bold text-[#456b14] italic mt-2">
+            Your Success, Our Mission
+          </p>
+
+          {/* Description */}
+          <div className="space-y-4 text-neutral-600 text-sm sm:text-base leading-relaxed mt-5">
             <p>
-              Modern technical education has deteriorated into passive 100–person zoom streams, credential factories, and copy-paste syntax memorization. At Tekzen Technologies, we run an intensive atelier model designed for engineers who refuse mediocrity.
+              At <strong className="text-neutral-900 font-semibold">Tekzen Technologies</strong>, we believe that practical skills, continuous learning, and the right guidance can transform career aspirations into professional achievements. We are an IT training institute based in Indore, Madhya Pradesh, committed to helping students, graduates, beginners, and working professionals develop the technical knowledge and practical experience needed to pursue opportunities in the technology industry.
             </p>
             <p>
-              We mentor high-velocity problem solvers in production environments. You don't study software; you design, fail, refactor, and ship industrial-grade distributed services until the discipline becomes second nature.
+              Our focus is on delivering industry-relevant training through hands-on practice, real-world projects, personalized mentorship, and career-oriented learning. We aim to bridge the gap between academic knowledge and practical industry requirements by helping learners build strong technical foundations and apply what they learn to solve real problems.
             </p>
           </div>
 
-          {/* Action CTAs matching Image 1 */}
+          {/* Action CTAs */}
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <button
-              onClick={scrollToLeadership}
+            <Link
+              to="/courses"
               className="inline-flex items-center gap-2 bg-[#133e2b] hover:bg-[#0c2a1a] text-white px-6 py-3.5 rounded-full font-bold text-sm shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer"
             >
-              <span>Meet Leadership</span>
-              <span>↓</span>
-            </button>
+              <span>Explore Course Tracks</span>
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </Link>
             <button
               onClick={scrollToCampus}
               className="inline-flex items-center justify-center bg-[#edeae1] hover:bg-[#e2dfd5] text-[#133e2b] px-6 py-3.5 rounded-full font-bold text-sm shadow-xs transition-all active:scale-95 cursor-pointer"

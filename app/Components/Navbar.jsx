@@ -21,7 +21,7 @@ export function Navbar() {
     { name: "Courses", href: "/courses" },
     { name: "About us", href: "/about" },
     { name: "Contact us", href: "/contact-us" },
-    { name: "Testimonials", href: "/testimonial" },
+    // { name: "Testimonials", href: "/testimonial" },
   ];
 
   const isItemActive = (href) => {
@@ -39,34 +39,8 @@ export function Navbar() {
       <nav className="max-w-7xl mx-auto bg-[#133e2b] rounded-full px-4 sm:px-6 py-2.5 sm:py-3 md:my-3 flex items-center justify-between shadow-lg border border-[#1b4a35]">
         {/* Logo Section */}
         <Link to="/" className="flex items-center gap-3 shrink-0">
-          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#c8f269] flex items-center justify-center shrink-0">
-            <svg
-              className="w-5 h-5 sm:w-6 sm:h-6 text-[#133e2b]"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <rect
-                x="3.5"
-                y="4.5"
-                width="17"
-                height="15"
-                rx="3"
-                fill="currentColor"
-              />
-              <path
-                d="M7.5 9.5L10 12L7.5 14.5"
-                stroke="#c8f269"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M12 14.5H16.5"
-                stroke="#c8f269"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-              />
-            </svg>
+          <div className="rounded-full bg-[#c8f269] p-3 flex items-center justify-center shrink-0">
+            <img src="/Tekzen logo - dark.png" alt="TekZen Logo" className="h-5" />
           </div>
           <div className="flex flex-col">
             <span className="text-white font-headline text-base sm:text-lg font-bold leading-tight tracking-tight">

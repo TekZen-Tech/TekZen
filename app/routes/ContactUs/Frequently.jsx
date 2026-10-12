@@ -57,21 +57,39 @@ export default function Frequently() {
               <p className="text-xs text-neutral-500 leading-relaxed mb-3">
                 Let our facilities team know 24 hours ahead of your arrival in Indore.
               </p>
-              <a
-                href="tel:+919685825273"
-                className="text-xs font-bold text-[#133e2b] hover:text-[#5c7a1e] inline-flex items-center gap-1 transition-colors group cursor-pointer"
-              >
-                <span>Direct Dial Desk</span>
-                <svg
-                  className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
+              <div className="flex flex-wrap items-center gap-2 pt-1">
+                <a
+                  href="tel:+919685825273"
+                  className="text-xs font-bold text-[#133e2b] hover:text-[#5c7a1e] inline-flex items-center gap-1 transition-colors group cursor-pointer"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                </svg>
-              </a>
+                  <span>+91 96858 25273</span>
+                  <svg
+                    className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                  </svg>
+                </a>
+                <span className="text-xs text-neutral-300">•</span>
+                <a
+                  href="tel:+919754475280"
+                  className="text-xs font-bold text-[#133e2b] hover:text-[#5c7a1e] inline-flex items-center gap-1 transition-colors group cursor-pointer"
+                >
+                  <span>+91 97544 75280</span>
+                  <svg
+                    className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 

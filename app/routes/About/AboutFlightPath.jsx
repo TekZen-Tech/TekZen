@@ -4,55 +4,57 @@ export default function AboutFlightPath() {
   const steps = [
     {
       num: "01",
-      title: "Learn Foundations",
+      stepName: "Learn",
+      title: "Understand Fundamentals",
       description:
-        "Master memory layouts, operating system primitives, POSIX calls, network protocols, and cryptographic handshakes.",
-      tag: "Weeks 01–04 • Core Theory",
+        "Understand fundamental concepts, core programming principles, memory behavior, logic building, and essential developer tools.",
+      tag: "Phase 01 • Concepts & Principles",
       isHighlighted: false,
       icon: (
-        <svg className="w-5 h-5 text-neutral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <rect x="4" y="4" width="16" height="16" rx="2" />
-          <rect x="9" y="9" width="6" height="6" />
-          <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" />
+        <svg className="w-5 h-5 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
         </svg>
       ),
     },
     {
       num: "02",
-      title: "Practice Daily Builds",
+      stepName: "Practice",
+      title: "Strengthen Knowledge",
       description:
-        "Write miniature key-value stores, customized HTTP routers, and multi-threaded event buses under rigorous code reviews.",
-      tag: "Weeks 05–08 • Raw Repetitions",
+        "Strengthen knowledge through progressive coding drills, guided assignments, laboratory exercises, and mentor code reviews.",
+      tag: "Phase 02 • Coding Drills & Exercises",
       isHighlighted: false,
       icon: (
-        <svg className="w-5 h-5 text-neutral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233l3.03-2.496a2.652 2.652 0 00-3.75-3.75l-2.496 3.03m-.784 3.216l-3.216.784" />
+        <svg className="w-5 h-5 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
         </svg>
       ),
     },
     {
       num: "03",
-      title: "Implement Production Ships",
+      stepName: "Build",
+      title: "Develop Practical Projects",
       description:
-        "Deploy containerized microservices to cloud infrastructure, configure CI/CD automations, and manage telemetry tracing.",
-      tag: "Weeks 09–14 • Live Production",
+        "Apply concepts by building practical applications, integrating databases, working with datasets, and completing capstone projects.",
+      tag: "Phase 03 • Real-World Applications",
       isHighlighted: false,
       icon: (
-        <svg className="w-5 h-5 text-neutral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m0 0L3 18l3-3m0 0l-3 3" />
+        <svg className="w-5 h-5 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
         </svg>
       ),
     },
     {
       num: "04",
-      title: "Get Hired Senior Bench",
+      stepName: "Grow",
+      title: "Portfolio & Career Confidence",
       description:
-        "Enter private interview pipelines with enterprise partners, defended by deep GitHub proof-of-work histories and system whiteboards.",
-      tag: "Outcome • Fellowship Placement",
+        "Improve technical confidence, build an impressive project portfolio, prepare for interviews, and explore professional opportunities.",
+      tag: "Phase 04 • Portfolio & Opportunities",
       isHighlighted: true,
       icon: (
         <svg className="w-5 h-5 text-[#133e2b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.62 48.62 0 0112 20.904a48.62 48.62 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
         </svg>
       ),
     },
@@ -63,24 +65,24 @@ export default function AboutFlightPath() {
       <div className="bg-[#FAF8F5] rounded-[2.5rem] sm:rounded-[3rem] p-8 sm:p-12 lg:p-16 border border-neutral-200/80 shadow-xs">
         
         {/* Header */}
-        <div className="flex flex-col items-center text-center">
-          <span className="text-xs font-bold text-[#628522] tracking-[0.2em] uppercase">
-            THE FELLOWSHIP FLIGHT PATH
+        <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
+          <span className="text-xs font-bold text-[#628522] tracking-[0.2em] uppercase bg-[#eef7db] px-4 py-1.5 rounded-full">
+            OUR LEARNING APPROACH
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#133e2b] font-headline tracking-tight mt-2">
-            A 4–Phase Battle-Tested Progression
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#133e2b] font-headline tracking-tight mt-4">
+            Learn → Practice → Build → Grow
           </h2>
-          <p className="text-neutral-600 text-sm sm:text-base mt-3 max-w-xl">
-            From zero command line intimidation to leading full-scale technical deploys.
+          <p className="text-neutral-600 text-sm sm:text-base mt-3.5 leading-relaxed">
+            At Tekzen Technologies, we follow a structured learning journey designed to help learners progress from basic concepts to practical implementation.
           </p>
         </div>
 
-        {/* 4 Flight Path Cards */}
+        {/* 4 Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
           {steps.map((s, idx) => (
             <div
               key={idx}
-              className={`bg-white rounded-[2rem] p-6 sm:p-7 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between ${
+              className={`bg-white rounded-[2rem] p-6 sm:p-7 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group ${
                 s.isHighlighted
                   ? "border-2 border-[#b0d83b] ring-4 ring-[#b0d83b]/15"
                   : "border border-neutral-200/90"
@@ -92,13 +94,18 @@ export default function AboutFlightPath() {
                   <span className="text-3xl sm:text-4xl font-extrabold text-[#133e2b] font-headline">
                     {s.num}
                   </span>
-                  <div className="w-9 h-9 rounded-full bg-neutral-100 flex items-center justify-center">
+                  <div className={`w-9 h-9 rounded-full flex items-center justify-center ${s.isHighlighted ? "bg-[#c8f269]" : "bg-neutral-100"}`}>
                     {s.icon}
                   </div>
                 </div>
 
+                {/* Step Name Tag */}
+                <span className="inline-block text-[11px] font-extrabold uppercase tracking-wider text-[#456b14] mt-3">
+                  Step {s.num} • {s.stepName}
+                </span>
+
                 {/* Title */}
-                <h3 className="text-lg font-bold font-headline text-[#133e2b] mt-4">
+                <h3 className="text-lg font-bold font-headline text-[#133e2b] mt-1">
                   {s.title}
                 </h3>
 
@@ -120,6 +127,13 @@ export default function AboutFlightPath() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Footer Note */}
+        <div className="mt-10 pt-6 border-t border-neutral-200/80 text-center">
+          <p className="text-xs sm:text-sm text-neutral-600 font-medium">
+            💡 This approach encourages consistent practice, independent thinking, and continuous improvement.
+          </p>
         </div>
 
       </div>

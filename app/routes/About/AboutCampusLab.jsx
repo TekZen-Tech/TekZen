@@ -43,7 +43,7 @@ export default function AboutCampusLab() {
                     Address Location
                   </h4>
                   <p className="text-xs sm:text-sm text-neutral-600 mt-0.5 leading-relaxed">
-                    Kalyani Market, Near Sri Aurobindo Hospital, Sanwer Road, Indore, MP 453555
+                    1st Floor, Kalyani Market, near London Villas, in front of Shankheshwar City, near Sri Aurobindo Hospital, Indore, Madhya Pradesh.
                   </p>
                 </div>
               </div>
@@ -101,7 +101,7 @@ export default function AboutCampusLab() {
           <div className="lg:col-span-6 relative">
             <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white/80 aspect-[4/3] bg-neutral-900 group">
               <img
-                src="/indore_lab.jpg"
+                src="/indore_map.png"
                 alt="TekZen Indore Engineering Lab Interior"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />

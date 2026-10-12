@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { submitToGoogleSheets } from "../../utils/googleSheets";
 
 // Custom styled select component to replace the basic OS default dropdown
 function CustomSelect({ label, value, options, onChange, placeholder = "Select option" }) {
@@ -104,6 +105,7 @@ export default function CampusVisitAndTrial() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const trackOptions = [
     {
@@ -117,6 +119,10 @@ export default function CampusVisitAndTrial() {
     {
       label: "Data Science & AI / ML (6 Months)",
       value: "Data Science & AI / ML (6 Months)",
+    },
+    {
+      label: "Data Analytics & Business Intelligence (4 Months)",
+      value: "Data Analytics & Business Intelligence (4 Months)",
     },
     {
       label: "Java Enterprise Full Stack (6 Months)",
@@ -158,8 +164,49 @@ export default function CampusVisitAndTrial() {
     },
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+
+    const payload = {
+      name: formData.fullName,
+      fullName: formData.fullName,
+      Name: formData.fullName,
+      "Full Name": formData.fullName,
+
+      phone: formData.phone,
+      whatsapp: formData.phone,
+      Phone: formData.phone,
+      WhatsApp: formData.phone,
+
+      Courses: formData.track,
+      courses: formData.track,
+      course: formData.track,
+      Course: formData.track,
+      track: formData.track,
+      Track: formData.track,
+
+      mode: formData.mode,
+      Mode: formData.mode,
+      "Preferred Mode": formData.mode,
+
+      "Who are you": formData.status,
+      "who are you": formData.status,
+      status: formData.status,
+      Status: formData.status,
+      "Current Status": formData.status,
+      userType: formData.status,
+
+      question: `Requested Demo Track: ${formData.track}`,
+      Question: `Requested Demo Track: ${formData.track}`,
+
+      formType: "Course Page - 3-Day Demo Seat Reservation",
+      "Form Source": "Courses Page",
+    };
+
+    await submitToGoogleSheets(payload);
+
+    setIsSubmitting(false);
     setSubmitted(true);
   };
 
@@ -211,7 +258,7 @@ export default function CampusVisitAndTrial() {
                   Indore Lab & Learning Center
                 </h4>
                 <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed mt-1">
-                  1st Floor, Kalyani Market, Near London Villas, Near Sri Aurobindo Hospital, Indore, Madhya Pradesh 453555
+                  1st Floor, Kalyani Market, near London Villas, in front of Shankheshwar City, near Sri Aurobindo Hospital, Indore, Madhya Pradesh.
                 </p>
               </div>
             </div>
@@ -237,12 +284,21 @@ export default function CampusVisitAndTrial() {
                 <span className="text-xs font-semibold text-neutral-500">
                   Direct Counselor Hotline & WhatsApp
                 </span>
-                <a
-                  href="tel:+919685825273"
-                  className="font-headline font-bold text-base sm:text-lg text-[#133e2b] hover:text-[#2e8b57] transition-colors mt-0.5"
-                >
-                  +91 96858 25273
-                </a>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:gap-3 mt-0.5">
+                  <a
+                    href="tel:+919685825273"
+                    className="font-headline font-bold text-base sm:text-lg text-[#133e2b] hover:text-[#2e8b57] transition-colors"
+                  >
+                    +91 96858 25273
+                  </a>
+                  <span className="hidden sm:inline text-neutral-300">•</span>
+                  <a
+                    href="tel:+919754475280"
+                    className="font-headline font-bold text-base sm:text-lg text-[#133e2b] hover:text-[#2e8b57] transition-colors"
+                  >
+                    +91 97544 75280
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -251,7 +307,7 @@ export default function CampusVisitAndTrial() {
           {/* Campus Picture with rounded capsule aesthetic matching Image 2 */}
           <div className="relative mt-8 max-w-lg rounded-[2.5rem] overflow-hidden shadow-xl border-4 border-white/80 aspect-[16/10] group">
             <img
-              src="/fellows-collaboration.jpg"
+              src="/class.jpeg"
               alt="TekZen Campus Collaboration Lab"
               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
             />
@@ -368,10 +424,23 @@ export default function CampusVisitAndTrial() {
                 <div className="pt-2">
                   <button
                     type="submit"
-                    className="w-full bg-[#133e2b] hover:bg-[#0c2a1a] text-white py-3.5 sm:py-4 px-6 rounded-2xl font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all active:scale-[0.99] cursor-pointer"
+                    disabled={isSubmitting}
+                    className="w-full bg-[#133e2b] hover:bg-[#0c2a1a] disabled:opacity-75 disabled:cursor-not-allowed text-white py-3.5 sm:py-4 px-6 rounded-2xl font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all active:scale-[0.99] cursor-pointer"
                   >
-                    <span>Reserve Free 3-Day Demo Seat</span>
-                    <span className="text-[#c8f269]">→</span>
+                    {isSubmitting ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <span>Reserving Demo Seat...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Reserve Free 3-Day Demo Seat</span>
+                        <span className="text-[#c8f269]">→</span>
+                      </>
+                    )}
                   </button>
                 </div>
 

@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import Enquiry from "./Enquiry";
 import ReachingOut from "./ReachingOut";
 import Frequently from "./Frequently";
+import { submitToGoogleSheets } from "../../utils/googleSheets";
 
 export default function ContactUs() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bookingSuccess, setBookingSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,8 +16,54 @@ export default function ContactUs() {
     timeSlot: "11:00 AM",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+
+    const payload = {
+      name: formData.name,
+      fullName: formData.name,
+      Name: formData.name,
+      "Full Name": formData.name,
+
+      email: formData.email,
+      Email: formData.email,
+      "Email Address": formData.email,
+
+      phone: formData.phone,
+      whatsapp: formData.phone,
+      Phone: formData.phone,
+      WhatsApp: formData.phone,
+      "Phone Number": formData.phone,
+
+      date: formData.date,
+      Date: formData.date,
+      "Preferred Date": formData.date,
+
+      timeSlot: formData.timeSlot,
+      "Time Slot": formData.timeSlot,
+
+      Courses: "Campus Walkthrough & Atelier Tour",
+      courses: "Campus Walkthrough & Atelier Tour",
+      Course: "Campus Walkthrough & Atelier Tour",
+
+      "Who are you": "Campus Visitor",
+      "who are you": "Campus Visitor",
+      userType: "Campus Visitor",
+
+      mode: "Offline at Indore Campus",
+      Mode: "Offline at Indore Campus",
+
+      question: `Preferred Date: ${formData.date}, Time Slot: ${formData.timeSlot}`,
+      Question: `Preferred Date: ${formData.date}, Time Slot: ${formData.timeSlot}`,
+
+      formType: "Campus Walkthrough Booking Modal",
+      "Form Source": "Contact Us Page - Hero Modal",
+    };
+
+    await submitToGoogleSheets(payload);
+
+    setIsSubmitting(false);
     setBookingSuccess(true);
     setTimeout(() => {
       setBookingSuccess(false);
@@ -27,7 +75,7 @@ export default function ContactUs() {
         date: "",
         timeSlot: "11:00 AM",
       });
-    }, 2000);
+    }, 2500);
   };
 
   return (
@@ -105,7 +153,7 @@ export default function ContactUs() {
             <span>Chat on WhatsApp</span>
           </a>
 
-          {/* Phone Button */}
+          {/* Phone Button 1 */}
           <a
             href="tel:+919685825273"
             className="bg-white/80 hover:bg-white border border-gray-200 text-[#133e2b] font-medium text-sm sm:text-base px-6 py-3.5 rounded-full transition-all duration-200 flex items-center gap-2.5 shadow-2xs cursor-pointer"
@@ -123,7 +171,28 @@ export default function ContactUs() {
                 d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.828-1.439-5.146-3.757-6.585-6.585l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
               />
             </svg>
-            <span>+91 9685825273</span>
+            <span>+91 96858 25273</span>
+          </a>
+
+          {/* Phone Button 2 */}
+          <a
+            href="tel:+919754475280"
+            className="bg-white/80 hover:bg-white border border-gray-200 text-[#133e2b] font-medium text-sm sm:text-base px-6 py-3.5 rounded-full transition-all duration-200 flex items-center gap-2.5 shadow-2xs cursor-pointer"
+          >
+            <svg
+              className="w-4 h-4 sm:w-5 sm:h-5 text-[#133e2b]"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.828-1.439-5.146-3.757-6.585-6.585l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+              />
+            </svg>
+            <span>+91 97544 75280</span>
           </a>
         </div>
 
@@ -134,7 +203,7 @@ export default function ContactUs() {
             {/* Left Column: Image with Badge */}
             <div className="lg:col-span-7 relative w-full h-[320px] sm:h-[420px] lg:h-[480px] rounded-2xl sm:rounded-[2rem] overflow-hidden group">
               <img
-                src="/contact_mentor.jpg"
+                src="/students.png"
                 alt="TekZen Indore Atelier Hub"
                 className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
               />
@@ -373,9 +442,20 @@ export default function ContactUs() {
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full bg-[#133e2b] hover:bg-[#1c523b] text-white font-medium py-3 rounded-xl transition-all cursor-pointer text-sm shadow-xs"
+                      disabled={isSubmitting}
+                      className="w-full bg-[#133e2b] hover:bg-[#1c523b] disabled:opacity-75 disabled:cursor-not-allowed text-white font-medium py-3 rounded-xl transition-all cursor-pointer text-sm shadow-xs flex items-center justify-center gap-2"
                     >
-                      Confirm Walkthrough Booking
+                      {isSubmitting ? (
+                        <>
+                          <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          </svg>
+                          <span>Confirming Booking...</span>
+                        </>
+                      ) : (
+                        <span>Confirm Walkthrough Booking</span>
+                      )}
                     </button>
                   </div>
                 </form>

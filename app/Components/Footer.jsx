@@ -10,8 +10,10 @@ export default function Footer() {
                         </p>
                         <div className="mt-6 space-y-1.5 text-neutral-300">
                             <span className="font-semibold text-white">Campus Indore:</span>
-                            <p>Kalyani Market, Near Bhawarkua Main Hub, Indore, MP - 452001</p>
-                            <p>Inquiry: +91 9685825273 | info@tekzen.tech</p>
+                            <p>1st Floor, Kalyani Market, near London Villas, in front of Shankheshwar City, near Sri Aurobindo Hospital, Indore, Madhya Pradesh.</p>
+                            <p>Phone: +91 96858 25273, +91 97544 75280</p>
+                            <p>Email: <a href="mailto:info@tekzentechnologies.com" className="hover:text-secondary-400">info@tekzentechnologies.com</a></p>
+                            <p>Website: <a href="http://www.tekzentechnologies.com" target="_blank" rel="noopener noreferrer" className="hover:text-secondary-400">www.tekzentechnologies.com</a></p>
                         </div>
                     </div>
 
@@ -33,12 +35,12 @@ export default function Footer() {
                             Speak with a senior engineering mentor or visit the Indore campus for a live classroom walkthrough.
                         </p>
                         <div className="flex flex-wrap gap-4 mt-6">
-                            <button className="bg-secondary-400 hover:bg-secondary-500 text-primary-950 font-medium rounded-full py-2.5 px-5 transition duration-200">
+                            <a href="https://wa.me/919685825273" target="_blank" rel="noopener noreferrer" className="bg-secondary-400 hover:bg-secondary-500 text-primary-950 font-medium rounded-full py-2.5 px-5 transition duration-200">
                                 WhatsApp Connect
-                            </button>
-                            <button className="border border-neutral-600 hover:border-neutral-400 bg-[#C1C9C030] rounded-full py-2.5 px-5 transition duration-200">
+                            </a>
+                            <a href="/courses#book-demo" className="border border-neutral-600 hover:border-neutral-400 bg-[#C1C9C030] rounded-full py-2.5 px-5 transition duration-200">
                                 Book Seat
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -104,7 +104,7 @@ export default function Hero() {
                     <div className="relative w-full max-w-[420px] aspect-[10/13] rounded-t-[180px] rounded-b-[180px] overflow-hidden shadow-2xl bg-red/60">
                         <div className="relative w-full max-w-[420px] aspect-[10/13] rounded-t-[180px] rounded-b-[180px] overflow-hidden shadow-2xl border-4 border-white/60">
                             <img
-                                src="/fellows-collaboration.jpg"
+                                src="/env2.jpeg"
                                 alt="TekZen Apprentices collaborating in the campus lab"
                                 className="w-full h-full object-cover object-center"
                             />

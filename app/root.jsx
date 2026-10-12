@@ -9,7 +9,16 @@ import {
 
 import "./app.css";
 
+export const meta = () => [
+  { title: "Tekzen Technologies" },
+  { name: "description", content: "Tekzen Technologies - Coding Institute & Software Apprenticeship" },
+];
+
 export const links = () => [
+  { rel: "icon", href: "/favicon.ico?v=1", sizes: "any" },
+  { rel: "icon", type: "image/png", href: "/favicon.png?v=1" },
+  { rel: "icon", type: "image/png", href: "/Tekzen%20logo%20-%20white.png?v=1" },
+  { rel: "apple-touch-icon", href: "/favicon.png?v=1" },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",

@@ -1,6 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { submitToGoogleSheets } from '../../utils/googleSheets';
 
 function TrialDemo() {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    program: 'C & C++ Programming (Free 3–Day Demo)',
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const payload = {
+      name: formData.name,
+      fullName: formData.name,
+      Name: formData.name,
+      "Full Name": formData.name,
+
+      phone: formData.phone,
+      whatsapp: formData.phone,
+      Phone: formData.phone,
+      WhatsApp: formData.phone,
+
+      Courses: formData.program,
+      courses: formData.program,
+      course: formData.program,
+      Course: formData.program,
+      track: formData.program,
+      Track: formData.program,
+
+      "Who are you": "Demo Learner",
+      "who are you": "Demo Learner",
+      userType: "Demo Learner",
+
+      mode: "Indore Campus (Offline In-Person)",
+      Mode: "Indore Campus (Offline In-Person)",
+
+      question: `Home Demo Registration for ${formData.program}`,
+      Question: `Home Demo Registration for ${formData.program}`,
+
+      formType: "Home Page - 3-Day Free Demo Seat",
+      "Form Source": "Home Page TrialDemo",
+    };
+
+    await submitToGoogleSheets(payload);
+
+    setIsSubmitting(false);
+    setSubmitted(true);
+    setTimeout(() => {
+      setSubmitted(false);
+      setFormData({
+        name: '',
+        phone: '',
+        program: 'C & C++ Programming (Free 3–Day Demo)',
+      });
+    }, 4500);
+  };
   return (
     <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       <div className="bg-[#c5f25a] relative overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 md:p-14 border border-[#b8e84a] shadow-lg">
@@ -61,15 +119,24 @@ function TrialDemo() {
               </svg>
             </button>
 
-            <a
-              href="tel:+919685825273"
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#103423]/90 mt-3.5 hover:underline transition-all"
-            >
-              <svg className="w-4 h-4 text-[#103423]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.826-1.47-5.114-3.758-6.584-6.584l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-              </svg>
-              <span>Or call direct: +919685825273</span>
-            </a>
+            <div className="flex flex-col sm:flex-row items-center gap-2 mt-3.5">
+              <a
+                href="tel:+919685825273"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#103423]/90 hover:underline transition-all"
+              >
+                <svg className="w-4 h-4 text-[#103423]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.826-1.47-5.114-3.758-6.584-6.584l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                </svg>
+                <span>+91 96858 25273</span>
+              </a>
+              <span className="text-xs text-[#103423]/50 hidden sm:inline">•</span>
+              <a
+                href="tel:+919754475280"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#103423]/90 hover:underline transition-all"
+              >
+                <span>+91 97544 75280</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -107,7 +174,7 @@ function TrialDemo() {
                 </svg>
                 <div>
                   <span className="font-bold text-neutral-900">Indore Campus: </span>
-                  <span>1st Floor, Kalyani Market, Near London Villas, In Front of Shankeshwar City, Near Sri Aurbindo Hospital, Indore, MP – 452001</span>
+                  <span>1st Floor, Kalyani Market, near London Villas, in front of Shankheshwar City, near Sri Aurobindo Hospital, Indore, Madhya Pradesh.</span>
                 </div>
               </div>
 
@@ -117,7 +184,8 @@ function TrialDemo() {
                 </svg>
                 <div>
                   <span className="font-bold text-neutral-900">Direct Hotline: </span>
-                  <a href="tel:+919685825273" className="hover:underline">+91 9685825273</a>
+                  <a href="tel:+919685825273" className="hover:underline">+91 96858 25273</a>,{' '}
+                  <a href="tel:+919754475280" className="hover:underline">+91 97544 75280</a>
                 </div>
               </div>
 
@@ -126,8 +194,18 @@ function TrialDemo() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                 </svg>
                 <div>
-                  <span className="font-bold text-neutral-900">Admissions: </span>
-                  <a href="mailto:admissions@tekzen.tech" className="hover:underline">admissions@tekzen.tech</a>
+                  <span className="font-bold text-neutral-900">Email: </span>
+                  <a href="mailto:info@tekzentechnologies.com" className="hover:underline">info@tekzentechnologies.com</a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#133e2b] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" />
+                </svg>
+                <div>
+                  <span className="font-bold text-neutral-900">Website: </span>
+                  <a href="http://www.tekzentechnologies.com" target="_blank" rel="noopener noreferrer" className="hover:underline">www.tekzentechnologies.com</a>
                 </div>
               </div>
 
@@ -168,67 +246,97 @@ function TrialDemo() {
                 Fill out this quick form. Our counseling mentor will reach out within 2 hours.
               </p>
 
-              <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
-                <div>
-                  <label className="block text-xs font-bold text-neutral-700 mb-1.5">
-                    Your Full Name
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Siddharth Verma"
-                    className="w-full bg-[#f3f3ea] text-sm text-neutral-800 px-5 py-3.5 rounded-full border border-transparent focus:border-[#133e2b] focus:bg-white focus:outline-none transition-all placeholder:text-neutral-400 font-medium"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold text-neutral-700 mb-1.5">
-                    WhatsApp / Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    placeholder="+91 98765 43210"
-                    className="w-full bg-[#f3f3ea] text-sm text-neutral-800 px-5 py-3.5 rounded-full border border-transparent focus:border-[#133e2b] focus:bg-white focus:outline-none transition-all placeholder:text-neutral-400 font-medium"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold text-neutral-700 mb-1.5">
-                    Interested Program
-                  </label>
-                  <div className="relative">
-                    <select
-                      defaultValue="c-cpp"
-                      className="w-full bg-[#f3f3ea] text-sm text-neutral-800 px-5 py-3.5 rounded-full border border-transparent focus:border-[#133e2b] focus:bg-white focus:outline-none transition-all appearance-none font-medium cursor-pointer pr-10"
-                    >
-                      <option value="c-cpp">C &amp; C++ Systems Mastery (Free 3–Day Demo)</option>
-                      <option value="fullstack">Full Stack Development (MERN + Next.js)</option>
-                      <option value="ai-ml">Data Science &amp; AI / ML</option>
-                      <option value="java">Java Enterprise Full Stack</option>
-                      <option value="python">Python Full Stack &amp; Backend</option>
-                      <option value="webdev">Modern Web Development</option>
-                    </select>
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-neutral-500">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-[#c8f269] hover:bg-[#b8e855] text-[#133e2b] font-bold text-sm sm:text-base py-3.5 rounded-full shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer mt-2"
-                >
-                  <span>Confirm Free Demo Seat</span>
-                  <div className="w-4 h-4 rounded-full border border-[#133e2b] flex items-center justify-center text-[#133e2b] text-[9px] font-bold">
+              {submitted ? (
+                <div className="py-8 text-center space-y-3">
+                  <div className="w-14 h-14 bg-[#c8f269] text-[#133e2b] rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
                     ✓
                   </div>
-                </button>
+                  <h4 className="text-xl font-bold text-neutral-900">Demo Seat Reserved!</h4>
+                  <p className="text-xs sm:text-sm text-neutral-600">
+                    Thank you, <span className="font-bold text-[#133e2b]">{formData.name || "Learner"}</span>. Our mentor will reach out within 2 hours with batch details.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-xs font-bold text-neutral-700 mb-1.5">
+                      Your Full Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Siddharth Verma"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full bg-[#f3f3ea] text-sm text-neutral-800 px-5 py-3.5 rounded-full border border-transparent focus:border-[#133e2b] focus:bg-white focus:outline-none transition-all placeholder:text-neutral-400 font-medium"
+                    />
+                  </div>
 
-                <p className="text-[11px] text-neutral-400 font-medium text-center pt-1">
-                  No credit card required. Only 4 spots left for the upcoming batch in Indore.
-                </p>
-              </form>
+                  <div>
+                    <label className="block text-xs font-bold text-neutral-700 mb-1.5">
+                      WhatsApp / Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      required
+                      placeholder="+91 98765 43210"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="w-full bg-[#f3f3ea] text-sm text-neutral-800 px-5 py-3.5 rounded-full border border-transparent focus:border-[#133e2b] focus:bg-white focus:outline-none transition-all placeholder:text-neutral-400 font-medium"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-neutral-700 mb-1.5">
+                      Interested Program
+                    </label>
+                    <div className="relative">
+                      <select
+                        value={formData.program}
+                        onChange={(e) => setFormData({ ...formData, program: e.target.value })}
+                        className="w-full bg-[#f3f3ea] text-sm text-neutral-800 px-5 py-3.5 rounded-full border border-transparent focus:border-[#133e2b] focus:bg-white focus:outline-none transition-all appearance-none font-medium cursor-pointer pr-10"
+                      >
+                        <option value="C & C++ Programming (Free 3–Day Demo)">C &amp; C++ Programming (Free 3–Day Demo)</option>
+                        <option value="Java Core & Development">Java Core &amp; Development</option>
+                        <option value="Data Analytics">Data Analytics</option>
+                        <option value="Data Science & AI">Data Science &amp; AI</option>
+                      </select>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-neutral-500">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-[#c8f269] hover:bg-[#b8e855] disabled:opacity-75 disabled:cursor-not-allowed text-[#133e2b] font-bold text-sm sm:text-base py-3.5 rounded-full shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer mt-2"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-[#133e2b]" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <span>Reserving Demo Seat...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Confirm Free Demo Seat</span>
+                        <div className="w-4 h-4 rounded-full border border-[#133e2b] flex items-center justify-center text-[#133e2b] text-[9px] font-bold">
+                          ✓
+                        </div>
+                      </>
+                    )}
+                  </button>
+
+                  <p className="text-[11px] text-neutral-400 font-medium text-center pt-1">
+                    No credit card required. Free attendance for upcoming sessions in Indore.
+                  </p>
+                </form>
+              )}
             </div>
           </div>
         </div>

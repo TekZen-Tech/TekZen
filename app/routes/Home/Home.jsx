@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import Stats from "./Stats";
 import Courses from "./Courses";
@@ -17,7 +18,7 @@ export function Home() {
 
                         <div className="rounded-img w-full h-full bg-[#eaeae4] border-4 border-white shadow-[0_20px_45px_rgba(0,0,0,0.12)] rounded-[4rem_4rem_50%_50%] overflow-hidden relative z-10">
                             <img
-                                src="/fellows-collaboration.jpg"
+                                src="/students.png"
                                 alt="TekZen Engineering Fellows collaborating in the campus lab"
                                 className="w-full h-full object-cover object-center"
                             />
@@ -80,11 +81,13 @@ export function Home() {
                         Gain practical skills in C/C++, Full Stack, Data Science &amp; AI/ML with live hands-on client projects, production pull requests, and direct placement assistance.
                     </p>
                     <div className="more-buttons flex flex-wrap sm:flex-row items-center mt-6 sm:mt-10 gap-3 sm:gap-6">
-                        <button className="inline-flex items-center gap-2 bg-[#c8f269] text-[#133e2b] px-4 py-2.5 sm:px-4 sm:py-2 rounded-full text-[12px] font-bold tracking-wide shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer border border-[#b8e855]">
+                        <Link to="/courses#book-demo" className="inline-flex items-center gap-2 bg-[#c8f269] text-[#133e2b] px-4 py-2.5 sm:px-4 sm:py-2 rounded-full text-[12px] font-bold tracking-wide shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer border border-[#b8e855]">
                             <span>Book Free Demo</span>
                             <ArrowRightIcon className="w-4 h-4" strokeWidth={2.5} />
-                        </button>
-                        <button className="inline-flex items-center gap-2 bg-tertiary-300 text-[#133e2b] px-4 py-2.5 sm:px-4 sm:py-2 rounded-full text-[12px] font-bold tracking-wide shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer">Explore Courses</button>
+                        </Link>
+                        <Link to="/courses" className="inline-flex items-center gap-2 bg-tertiary-300 text-[#133e2b] px-4 py-2.5 sm:px-4 sm:py-2 rounded-full text-[12px] font-bold tracking-wide shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer">
+                            Explore Courses
+                        </Link>
                     </div>
 
                     {/* Mentor Info Section */}

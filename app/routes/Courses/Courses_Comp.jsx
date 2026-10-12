@@ -1,12 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSearchParams, useLocation } from "react-router";
 import Hero from "./Hero";
 import Courses from "../Home/Courses";
 import CourseDetailedSection from "./CourseDetailedSection";
 import DemoPassBanner from "./DemoPassBanner";
 import CampusVisitAndTrial from "./CampusVisitAndTrial";
+import { coursesSyllabusData } from "./coursesData.jsx";
 
 export default function Courses_Comp() {
-    const [selectedCourseId, setSelectedCourseId] = useState("c-cpp-systems-mastery");
+    const [searchParams] = useSearchParams();
+    const location = useLocation();
+    const trackParam = searchParams.get("track");
+
+    const [selectedCourseId, setSelectedCourseId] = useState(
+        trackParam && coursesSyllabusData[trackParam] ? trackParam : "c-cpp-systems-mastery"
+    );
+
+    // Sync selected track and scroll to detailed syllabus when track or hash changes
+    useEffect(() => {
+        if (trackParam && coursesSyllabusData[trackParam]) {
+            setSelectedCourseId(trackParam);
+        }
+        if (trackParam || location.hash === "#detailed-syllabus") {
+            const syllabusEl = document.getElementById("detailed-syllabus");
+            if (syllabusEl) {
+                // Short timeout to ensure DOM layout has rendered
+                const timer = setTimeout(() => {
+                    syllabusEl.scrollIntoView({ behavior: "smooth" });
+                }, 150);
+                return () => clearTimeout(timer);
+            }
+        }
+    }, [trackParam, location.hash]);
 
     // When a course card in the overview grid is clicked
     const handleDetailView = (course) => {

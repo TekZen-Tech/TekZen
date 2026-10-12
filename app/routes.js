@@ -6,7 +6,7 @@ export default [
         route("/courses", "routes/Courses/Courses_Comp.jsx"),
         route("/about", "routes/About.jsx"),
         route("/contact-us", "routes/ContactUs/ContactUs.jsx"),
-        route("/testimonial", "routes/Testimonial/Testimonial.jsx"),
+        // route("/testimonial", "routes/Testimonial/Testimonial.jsx"),
     ])
 ];
 

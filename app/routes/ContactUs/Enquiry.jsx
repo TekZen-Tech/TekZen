@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { submitToGoogleSheets } from "../../utils/googleSheets";
 
 export default function Enquiry() {
   const [formData, setFormData] = useState({
@@ -12,10 +13,72 @@ export default function Enquiry() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+
+    const payload = {
+      // Name
+      name: formData.fullName,
+      fullName: formData.fullName,
+      Name: formData.fullName,
+      "Full Name": formData.fullName,
+
+      // Phone
+      phone: formData.whatsapp,
+      whatsapp: formData.whatsapp,
+      Phone: formData.whatsapp,
+      WhatsApp: formData.whatsapp,
+      "WhatsApp Number": formData.whatsapp,
+
+      // Email
+      email: formData.email,
+      Email: formData.email,
+      "Email Address": formData.email,
+
+      // Courses (matches user's exact "Courses" column)
+      Courses: formData.track,
+      courses: formData.track,
+      course: formData.track,
+      Course: formData.track,
+      track: formData.track,
+      Track: formData.track,
+      "Interested Course": formData.track,
+
+      // Who are you (matches user's exact "Who are you" column)
+      "Who are you": formData.userType,
+      "who are you": formData.userType,
+      "Who are you?": formData.userType,
+      "Who Are You": formData.userType,
+      userType: formData.userType,
+      "User Type": formData.userType,
+      Role: formData.userType,
+
+      // mode (matches user's exact "mode" column)
+      mode: formData.interactionMode,
+      Mode: formData.interactionMode,
+      interactionMode: formData.interactionMode,
+      "Interaction Mode": formData.interactionMode,
+
+      // question (matches user's exact "question" column)
+      question: formData.note,
+      Question: formData.note,
+      message: formData.note,
+      Message: formData.note,
+      note: formData.note,
+      Note: formData.note,
+
+      formType: "Contact Inquiry & Demo Reservation",
+      "Form Source": "Contact Us Page",
+    };
+
+    await submitToGoogleSheets(payload);
+
+    setIsSubmitting(false);
     setSubmitted(true);
+
     setTimeout(() => {
       setSubmitted(false);
       setFormData({
@@ -27,7 +90,7 @@ export default function Enquiry() {
         interactionMode: "Offline at Indore Campus",
         note: "",
       });
-    }, 3500);
+    }, 4500);
   };
 
   return (
@@ -54,7 +117,7 @@ export default function Enquiry() {
               </h3>
 
               <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed mb-5">
-                1st Floor, Kalyani Market, Near London Villas, In Front of Shankeshwar City, Near Sri Aurobindo Hospital, Indore, MP - 452001
+                1st Floor, Kalyani Market, near London Villas, in front of Shankheshwar City, near Sri Aurobindo Hospital, Indore, Madhya Pradesh.
               </p>
 
               <div className="border-t border-gray-300/60 pt-4 space-y-2.5 text-xs text-neutral-700 font-medium">
@@ -103,7 +166,32 @@ export default function Enquiry() {
                         Admissions Desk
                       </p>
                       <p className="text-sm font-bold text-[#133e2b]">
-                        +91 9685825273
+                        +91 96858 25273
+                      </p>
+                    </div>
+                  </div>
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-[#133e2b] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                  </svg>
+                </a>
+
+                {/* Contact Line 1b - Secondary phone */}
+                <a
+                  href="tel:+919754475280"
+                  className="bg-white rounded-full p-3 px-4 flex items-center justify-between border border-gray-100/80 hover:shadow-xs transition-all group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-full bg-[#f4f3ec] flex items-center justify-center text-[#133e2b] shrink-0">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.828-1.439-5.146-3.757-6.585-6.585l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-wide">
+                        Alternative Direct Line
+                      </p>
+                      <p className="text-sm font-bold text-[#133e2b]">
+                        +91 97544 75280
                       </p>
                     </div>
                   </div>
@@ -114,7 +202,7 @@ export default function Enquiry() {
 
                 {/* Contact Line 2 */}
                 <a
-                  href="mailto:admissions@tekzen.tech"
+                  href="mailto:info@tekzentechnologies.com"
                   className="bg-white rounded-full p-3 px-4 flex items-center justify-between border border-gray-100/80 hover:shadow-xs transition-all group"
                 >
                   <div className="flex items-center gap-3">
@@ -128,7 +216,34 @@ export default function Enquiry() {
                         Admissions & Fellowships
                       </p>
                       <p className="text-sm font-bold text-[#133e2b]">
-                        admissions@tekzen.tech
+                        info@tekzentechnologies.com
+                      </p>
+                    </div>
+                  </div>
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-[#133e2b] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                  </svg>
+                </a>
+
+                {/* Contact Line 3 - Website */}
+                <a
+                  href="http://www.tekzentechnologies.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white rounded-full p-3 px-4 flex items-center justify-between border border-gray-100/80 hover:shadow-xs transition-all group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-full bg-[#f4f3ec] flex items-center justify-center text-[#133e2b] shrink-0">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-wide">
+                        Official Website
+                      </p>
+                      <p className="text-sm font-bold text-[#133e2b]">
+                        www.tekzentechnologies.com
                       </p>
                     </div>
                   </div>
@@ -324,11 +439,12 @@ export default function Enquiry() {
                       className="w-full bg-[#f7f6f0] border border-transparent focus:border-[#133e2b] focus:bg-white rounded-2xl py-3 px-4 pr-10 text-sm text-[#133e2b] outline-none transition-all appearance-none cursor-pointer"
                     >
                       <option value="" disabled>
-                        Select an engineering track or visit intention
+                        Select a course track or visit intention
                       </option>
-                      <option value="Full Stack Web Architecture">Full Stack Web Architecture</option>
-                      <option value="System Design & DevOps">System Design & DevOps</option>
-                      <option value="Backend Engineering">Backend Engineering</option>
+                      <option value="C & C++ Programming">C & C++ Programming</option>
+                      <option value="Java Core & Development">Java Core & Development</option>
+                      <option value="Data Analytics">Data Analytics</option>
+                      <option value="Data Science & AI">Data Science & AI</option>
                       <option value="1-on-1 Code Audit & Campus Tour">1-on-1 Code Audit & Campus Tour</option>
                     </select>
                     <div className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
@@ -418,18 +534,31 @@ export default function Enquiry() {
                 <div className="pt-2">
                   <button
                     type="submit"
-                    className="w-full bg-[#c8f269] hover:bg-[#baee51] text-[#133e2b] font-extrabold text-sm sm:text-base py-4 px-6 rounded-full shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer group"
+                    disabled={isSubmitting}
+                    className="w-full bg-[#c8f269] hover:bg-[#baee51] disabled:opacity-75 disabled:cursor-not-allowed text-[#133e2b] font-extrabold text-sm sm:text-base py-4 px-6 rounded-full shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer group"
                   >
-                    <span>Submit Inquiry & Reserve Free Demo</span>
-                    <svg
-                      className="w-4 h-4 text-[#133e2b] transition-transform group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                    </svg>
+                    {isSubmitting ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-[#133e2b]" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <span>Submitting to Admissions Desk...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Submit Inquiry & Reserve Free Demo</span>
+                        <svg
+                          className="w-4 h-4 text-[#133e2b] transition-transform group-hover:translate-x-1"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                      </>
+                    )}
                   </button>
 
                   {/* Trust Badge Below Button */}
