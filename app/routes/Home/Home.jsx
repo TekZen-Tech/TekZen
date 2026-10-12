@@ -16,6 +16,11 @@ export function Home() {
                     <div className="relative w-[70%] sm:w-[50%] md:w-[55%] aspect-[4/5]">
 
                         <div className="rounded-img w-full h-full bg-[#eaeae4] border-4 border-white shadow-[0_20px_45px_rgba(0,0,0,0.12)] rounded-[4rem_4rem_50%_50%] overflow-hidden relative z-10">
+                            <img
+                                src="/fellows-collaboration.jpg"
+                                alt="TekZen Engineering Fellows collaborating in the campus lab"
+                                className="w-full h-full object-cover object-center"
+                            />
                         </div>
 
                         <div className="absolute -top-4 -right-4 sm:-top-22 sm:-right-10 rounded-[60%/60%] bg-white p-1.5 sm:p-1  shadow-xl z-5 rotate-25">
