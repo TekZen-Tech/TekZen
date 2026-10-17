@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router';
 import { submitToGoogleSheets } from '../../utils/googleSheets';
 
 function TrialDemo() {
@@ -112,12 +113,15 @@ function TrialDemo() {
 
           {/* Right Action CTA */}
           <div className="flex flex-col items-center lg:items-end shrink-0">
-            <button className="bg-[#103423] hover:bg-[#0a2317] text-white font-bold text-sm sm:text-base px-7 py-4 rounded-full shadow-md hover:shadow-xl transition-all flex items-center gap-2.5 cursor-pointer">
+            <Link
+              to="/courses#book-demo"
+              className="bg-[#103423] hover:bg-[#0a2317] text-white font-bold text-sm sm:text-base px-7 py-4 rounded-full shadow-md hover:shadow-xl transition-all flex items-center gap-2.5 cursor-pointer"
+            >
               <span>Reserve Your Demo Seat</span>
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
-            </button>
+            </Link>
 
             <div className="flex flex-col sm:flex-row items-center gap-2 mt-3.5">
               <a
