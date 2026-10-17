@@ -42,9 +42,14 @@ export default function AboutCampusLab() {
                   <h4 className="font-headline font-bold text-sm text-[#133e2b]">
                     Address Location
                   </h4>
-                  <p className="text-xs sm:text-sm text-neutral-600 mt-0.5 leading-relaxed">
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=1st+Floor%2C+Kalyani+Market%2C+near+London+Villas%2C+in+front+of+Shankheshwar+City%2C+near+Sri+Aurobindo+Hospital%2C+Indore%2C+Madhya+Pradesh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs sm:text-sm text-neutral-600 mt-0.5 leading-relaxed hover:text-[#133e2b] hover:underline block"
+                  >
                     1st Floor, Kalyani Market, near London Villas, in front of Shankheshwar City, near Sri Aurobindo Hospital, Indore, Madhya Pradesh.
-                  </p>
+                  </a>
                 </div>
               </div>
 
@@ -97,29 +102,51 @@ export default function AboutCampusLab() {
 
           </div>
 
-          {/* Right Column: Lab Photo & Overlay Chip matching Image 5 */}
+          {/* Right Column: Interactive Campus Map */}
           <div className="lg:col-span-6 relative">
-            <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white/80 aspect-[4/3] bg-neutral-900 group">
-              <img
-                src="/indore_map.png"
-                alt="TekZen Indore Engineering Lab Interior"
-                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=1st+Floor%2C+Kalyani+Market%2C+near+London+Villas%2C+in+front+of+Shankheshwar+City%2C+near+Sri+Aurobindo+Hospital%2C+Indore%2C+Madhya+Pradesh"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open TekZen Technologies Indore location on Google Maps"
+              className="relative block rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white/80 aspect-[4/3] bg-neutral-900 group cursor-pointer"
+            >
+              <iframe
+                title="TekZen Technologies Indore Campus Map"
+                src="https://maps.google.com/maps?q=1st+Floor%2C+Kalyani+Market%2C+near+London+Villas%2C+in+front+of+Shankheshwar+City%2C+near+Sri+Aurobindo+Hospital%2C+Indore%2C+Madhya+Pradesh&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                className="w-full h-full border-0 pointer-events-none group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+                aria-hidden="true"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
 
-              {/* Overlay Chip matching Image 5 */}
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-black/40 backdrop-blur-md border border-white/20 text-white">
-                <span className="inline-block text-[10px] font-extrabold uppercase tracking-wider bg-[#c8f269] text-[#133e2b] px-2.5 py-0.5 rounded-full mb-1.5">
-                  INDORE HUB
-                </span>
+              {/* Top Action Pill */}
+              <div className="absolute top-4 right-4 bg-white/95 hover:bg-white text-[#133e2b] px-3.5 py-1.5 rounded-full text-xs font-bold shadow-md backdrop-blur-md flex items-center gap-1.5 transition-all group-hover:scale-105">
+                <span>View on Google Maps</span>
+                <svg className="w-3.5 h-3.5 text-[#133e2b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                </svg>
+              </div>
+
+              {/* Overlay Chip */}
+              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 text-white transition-all group-hover:bg-black/75">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="inline-block text-[10px] font-extrabold uppercase tracking-wider bg-[#c8f269] text-[#133e2b] px-2.5 py-0.5 rounded-full">
+                    INDORE HUB • LIVE MAP
+                  </span>
+                  <span className="text-[11px] font-bold text-[#c8f269] flex items-center gap-1">
+                    <span>Click for directions</span>
+                    <span>→</span>
+                  </span>
+                </div>
                 <h4 className="font-headline font-bold text-base text-white">
-                  Where Code Becomes Craft
+                  TekZen Technologies Campus
                 </h4>
-                <p className="text-xs text-neutral-300 mt-0.5">
-                  Open desk terminals, zero cubicles, pure collaborative velocity.
+                <p className="text-xs text-neutral-300 mt-0.5 line-clamp-2">
+                  1st Floor, Kalyani Market, near London Villas, in front of Shankheshwar City, near Sri Aurobindo Hospital, Indore.
                 </p>
               </div>
-            </div>
+            </a>
           </div>
 
         </div>

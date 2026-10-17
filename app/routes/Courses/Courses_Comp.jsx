@@ -31,6 +31,15 @@ export default function Courses_Comp() {
                 return () => clearTimeout(timer);
             }
         }
+        if (location.hash === "#book-demo") {
+            const demoEl = document.getElementById("book-demo");
+            if (demoEl) {
+                const timer = setTimeout(() => {
+                    demoEl.scrollIntoView({ behavior: "smooth" });
+                }, 150);
+                return () => clearTimeout(timer);
+            }
+        }
     }, [trackParam, location.hash]);
 
     // When a course card in the overview grid is clicked

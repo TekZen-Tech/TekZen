@@ -116,9 +116,14 @@ export default function Enquiry() {
                 Indore Campus & Labs
               </h3>
 
-              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed mb-5">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=1st+Floor%2C+Kalyani+Market%2C+near+London+Villas%2C+in+front+of+Shankheshwar+City%2C+near+Sri+Aurobindo+Hospital%2C+Indore%2C+Madhya+Pradesh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs sm:text-sm text-neutral-600 hover:text-[#133e2b] hover:underline leading-relaxed mb-5 block transition-colors"
+              >
                 1st Floor, Kalyani Market, near London Villas, in front of Shankheshwar City, near Sri Aurobindo Hospital, Indore, Madhya Pradesh.
-              </p>
+              </a>
 
               <div className="border-t border-gray-300/60 pt-4 space-y-2.5 text-xs text-neutral-700 font-medium">
                 <div className="flex items-center justify-between">
@@ -305,18 +310,35 @@ export default function Enquiry() {
               </div>
 
               {/* Map Illustration Container */}
-              <div className="relative w-full h-44 rounded-2xl overflow-hidden border border-gray-200/80 mb-3 group">
-                <img
-                  src="/indore_map.png"
-                  alt="Indore Campus Map"
-                  className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=1st+Floor%2C+Kalyani+Market%2C+near+London+Villas%2C+in+front+of+Shankheshwar+City%2C+near+Sri+Aurobindo+Hospital%2C+Indore%2C+Madhya+Pradesh"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open TekZen Technologies Indore location on Google Maps"
+                className="relative block w-full h-44 rounded-2xl overflow-hidden border border-gray-200/80 mb-3 group cursor-pointer bg-neutral-900"
+              >
+                <iframe
+                  title="TekZen Technologies Campus Location Map"
+                  src="https://maps.google.com/maps?q=1st+Floor%2C+Kalyani+Market%2C+near+London+Villas%2C+in+front+of+Shankheshwar+City%2C+near+Sri+Aurobindo+Hospital%2C+Indore%2C+Madhya+Pradesh&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  className="w-full h-full border-0 pointer-events-none group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                  aria-hidden="true"
                 />
-                
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10 pointer-events-none" />
+
+                {/* Top Action Pill */}
+                <div className="absolute top-2.5 right-2.5 bg-white/95 hover:bg-white text-[#133e2b] px-2.5 py-1 rounded-full text-[10px] font-bold shadow-xs backdrop-blur-md flex items-center gap-1 transition-all group-hover:scale-105">
+                  <span>Open Maps</span>
+                  <svg className="w-3 h-3 text-[#133e2b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                  </svg>
+                </div>
+
                 {/* Location Pin Badge */}
-                <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur-xs px-3 py-1.5 rounded-full shadow-xs border border-black/5 flex items-center gap-1.5 text-[11px] font-bold text-[#133e2b]">
+                <div className="absolute bottom-2.5 left-2.5 bg-white/95 backdrop-blur-xs px-3 py-1 rounded-full shadow-xs border border-black/5 flex items-center gap-1.5 text-[11px] font-bold text-[#133e2b]">
                   <span>📍 Opposite Shankeshwar City, Ujjain Rd</span>
                 </div>
-              </div>
+              </a>
 
               <p className="text-xs text-neutral-600 leading-relaxed">
                 Accessible via BRTS, local transit, and shared autos along the Sanwer-Ujjain corridor. Ample parking available inside Kalyani Market arcade.
