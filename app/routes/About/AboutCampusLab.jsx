@@ -43,7 +43,7 @@ export default function AboutCampusLab() {
                     Address Location
                   </h4>
                   <a
-                    href="https://www.google.com/maps/search/?api=1&query=1st+Floor%2C+Kalyani+Market%2C+near+London+Villas%2C+in+front+of+Shankheshwar+City%2C+near+Sri+Aurobindo+Hospital%2C+Indore%2C+Madhya+Pradesh"
+                    href="https://maps.app.goo.gl/DYfWTsFBvMzZkkfr9"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs sm:text-sm text-neutral-600 mt-0.5 leading-relaxed hover:text-[#133e2b] hover:underline block"
@@ -105,7 +105,7 @@ export default function AboutCampusLab() {
           {/* Right Column: Interactive Campus Map */}
           <div className="lg:col-span-6 relative">
             <a
-              href="https://www.google.com/maps/search/?api=1&query=1st+Floor%2C+Kalyani+Market%2C+near+London+Villas%2C+in+front+of+Shankheshwar+City%2C+near+Sri+Aurobindo+Hospital%2C+Indore%2C+Madhya+Pradesh"
+              href="https://maps.app.goo.gl/DYfWTsFBvMzZkkfr9"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Open TekZen Technologies Indore location on Google Maps"
@@ -113,7 +113,7 @@ export default function AboutCampusLab() {
             >
               <iframe
                 title="TekZen Technologies Indore Campus Map"
-                src="https://maps.google.com/maps?q=1st+Floor%2C+Kalyani+Market%2C+near+London+Villas%2C+in+front+of+Shankheshwar+City%2C+near+Sri+Aurobindo+Hospital%2C+Indore%2C+Madhya+Pradesh&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d919.5448869134004!2d75.8588713!3d22.79581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396303293642daf7%3A0x80b35a49da967710!2sTekzen%20Technologies!5e0!3m2!1sen!2sin!4v1"
                 className="w-full h-full border-0 pointer-events-none group-hover:scale-105 transition-transform duration-700"
                 loading="lazy"
                 aria-hidden="true"
